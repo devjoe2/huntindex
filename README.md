@@ -1,0 +1,4 @@
+huntindex
+=========
+
+Hunt Puzzle Index
