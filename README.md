@@ -1,4 +1,4 @@
 huntindex
 =========
 
-Hunt Puzzle Index
+These files are related to the Hunt Puzzle Index.
