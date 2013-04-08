@@ -1829,14 +1829,15 @@ class UploadData(webapp.RequestHandler):
             keywords[go:go]=[skw]
           authors=node.getElementsByTagName("author")
           for author1 in authors:
-            au=getattr(author1,"name")
+            #au=getattr(author1,"name")
+            au=gettext(author1)
             if len(au)==0:
               showerr(self,"Ignoring author with empty name",author1)
               continue
-            sau=str(au.encode('ascii','replace'))
-            if sau not in author:
+            #sau=str(au.encode('ascii','replace'))
+            if au not in author:
               #we don't sort authors
-              author.append(sau)
+              author.append(au)
           if len(pquery)==0:
             pzs.append(Puzzle(sortorder=sortorder, hunt=hunt, num=num, title=title, puzurl=puzurl, solurl=solurl, exptext=exptext, kwds=keywords, author=author))
             pznames.append(sortorder)
@@ -1905,7 +1906,7 @@ class DownloadData(webapp.RequestHandler):
         self.response.out.write('  <solurl href="'+pz.solurl+'"/>\n')
       self.response.out.write('  <exptext>'+cdata(pz.exptext)+'</exptext>\n')
       for au in pz.author:
-        self.response.out.write('  <author name="'+cdata(au)+'"/>\n')
+        self.response.out.write('  <author>'+cdata(au)+'</author>\n')
       for kw in pz.kwds:
         self.response.out.write('  <kwlink name="'+kw+'"/>\n')
       self.response.out.write(' </puzzle>\n')
